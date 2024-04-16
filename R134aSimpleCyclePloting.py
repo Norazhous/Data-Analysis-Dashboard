@@ -11,20 +11,24 @@ pp = PropertyPlot('HEOS::R134a', 'PH', unit_system='EUR')
 cycle = SimpleCompressionCycle('HEOS::R134a', 'PH', unit_system='EUR')
 
 # T and P values. e- evaporator , c- condenser
-T1 = 11+273.15   # compressor inlet
-T2 = 62+273.15   # compressor outlet
-T3 = 41.5+273.15   # condenser inlet
-T4 = 2.2 +273.15    # evaporator inlet
-T5 = 1.4+273.15   # evaporator outlet
+T1 = 14.49+273.15   # compressor inlet
+T2 = 68.02+273.15   # compressor outlet
+T3 = 43.1+273.15   # condenser inlet
+T4 = 3.65+273.15    # evaporator inlet
+T5 = 2.82+273.15   # evaporator outlet
 
-P1 = 3
-P2 = 10.6
+P1 = 2.41
+P2 = 10.18
+
+PSA = 1011.6
+
+F= 4.43
 
 # plot the p-h diagram
 pp.calc_isolines()
 
 # plot the cycle, 0.7 is the Isentropic compressor efficiency, need calculate in our experiment 
-cycle.simple_solve_dt(T5, T3, P1, P2, 0.7, SI=True) #http://www.coolprop.org/apidoc/CoolProp.Plots.SimpleCyclesCompression.html
+cycle.simple_solve_dt(T5, T3, P1+1, P2+1, 0.7, SI=True) #http://www.coolprop.org/apidoc/CoolProp.Plots.SimpleCyclesCompression.html
 cycle.steps = 50
 sc = cycle.get_state_changes()
 plt.close(cycle.figure)
@@ -43,10 +47,10 @@ pp.show()
 # plt.savefig('p_h_diagram2.png')
 
 # calculation for h and Q and COP
-P1_pa = P1*100000
-P2_pa = P2*100000
+P1_pa = P1*100000 + PSA *100
+P2_pa = P2*100000 + PSA *100
 
-m = 0.0014
+m = F*1.15/3600
 
 working_fluid='R134a'
 
@@ -72,27 +76,28 @@ h5 = CP.PropsSI('H', 'T', T5, 'P', P1_pa, working_fluid)
 # h51 = pp.state.keyed_output(CoolProp.iHmass) 
 
 Q = m*(h1-h3)
+Qcp = m*(h2-h1)
 
 # print the value of calculation 
-print(" h1 =", h1, " h2 =",h2," h3 =", h3, " h4 =",h4," h5 =", h5, " Q =",Q)
+print(" h1 =", h1, " h2 =",h2," h3 =", h3, " h4 =",h4," h5 =", h5, " Q =",Q, " Qcp =",Qcp)
 # print(" h11 =", h11, " h21 =",h21," h31 =", h31, " h41 =",h41," h51 =", h51, " Q =",Q)
 
 
 # This part Quality(0(liquid)-1(vapor)) and temperature are need for calculation.
 # Calculate saturation liquid pressure based on the temperature and quality
-T_l_input = 41.5+273.15
+T_l_input = T3
 pp.state.update(CoolProp.QT_INPUTS,0.0,T_l_input) # Q means quality Quality (Q) is a dimensionless quantity that represents the ratio of the mass of vapor to the total mass (vapor + liquid) in a two-phase mixture. Its value ranges from 0 (saturated liquid) to 1 (saturated vapor).Temperature (T) is the thermodynamic temperature of the fluid. 
 p_l = pp.state.keyed_output(CoolProp.iP)
 # Calculate saturation vapor pressure based on the temperature and quality
-T_v_input = 1.4+273.15
+T_v_input = T5
 pp.state.update(CoolProp.QT_INPUTS,1.0,T_v_input)
 p_v = pp.state.keyed_output(CoolProp.iP)
 # Calculate saturation vapor tempreature based on the pressure and quality
-p_v_input = 3*100000
+p_v_input = P1_pa
 pp.state.update(CoolProp.PQ_INPUTS,p_v_input,1)
 T_v = pp.state.keyed_output(CoolProp.iT) -273.15
 # Calculate saturation liquid tempreature based on the pressure and quality
-p_l_input = 10.5*100000
+p_l_input = P2_pa
 pp.state.update(CoolProp.PQ_INPUTS,p_l_input,0)
 T_l = pp.state.keyed_output(CoolProp.iT) -273.15
 
