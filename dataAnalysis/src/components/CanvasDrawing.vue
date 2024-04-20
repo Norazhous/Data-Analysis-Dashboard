@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2> p-h Chart for Enthalpy Value (Student)</h2>
-               
+
                 <div id="parent" class="image-container">
 
                     <!-- <img src="../assets/R134_p_h_diagram.svg" alt="Background" @load="adjustCanvasSize"> -->
@@ -13,13 +13,15 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="clearLine">Plotting line </button>
+                        <button type="button" class="col-12 btn btn-primary" @click="pencil()">Pencil
+                        </button>
                     </div>
                     <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="clearLine">Straight line </button>
+                        <button type="button" class="col-12 btn btn-primary" @click="straightLineDrawing()">Straight
+                            line </button>
                     </div>
                     <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="clearLine">Clear</button>
+                        <button type="button" class="col-12 btn btn-primary" @click="clearLine()">Clear</button>
                     </div>
                 </div>
             </div>
@@ -112,24 +114,19 @@ export default {
             drawing: false,
             startX: 0,
             startY: 0,
+            canvas: null,
+            ctx: null,
+            rect: null,
+            straightLine: false,
+            lines: [],
+            mouseX: 0,
+            mouseY: 0,
+            pencilPath: [],
+
         };
     },
     mounted() {
-        // adjust the size of the canvas
-        // this.$nextTick(() => {
-        //     const canvas = this.$refs.canvas;
-        //     const parent = document.getElementById('parent')
-        //     // canvas.width = window.innerWidth;
-        //     // canvas.height = window.innerHeight;
-        //     // canvas.style.width = parent.height;
-        //     // canvas.style.height = parent.height;
-        //     // canvas.width = parent.offsetWidth;
-        //     // canvas.height = parent.offsetHeight;
-        //     // canvas.style.width = '100%';
-        //     // canvas.style.height = '100%';
-        //     canvas.width = canvas.offsetWidth;
-        //     canvas.height = canvas.offsetHeight;
-        // });
+
         this.setupCanvas();
         // window.addEventListener('resize', this.setupCanvas);
     },
@@ -138,51 +135,138 @@ export default {
     // },
     methods: {
         setupCanvas() {
-            const canvas = this.$refs.canvas;
+            this.canvas = this.$refs.canvas;
+            this.ctx = this.$refs.canvas.getContext('2d');
+            // const canvas = this.$refs.canvas;
             // const parent = document.getElementById('parent');
             // canvas.width = parent.offsetWidth;
             // canvas.height = parent.offsetHeight;
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            this.canvas.width = this.canvas.offsetWidth;
+            this.canvas.height = this.canvas.offsetHeight;
+            this.rect = this.$refs.canvas.getBoundingClientRect();
         },
 
         // drawing lines function
         startDrawing(e) {
             this.drawing = true;
-            const rect = this.$refs.canvas.getBoundingClientRect();
-            console.log(rect);
-            // e.clientX = rect.left;
-            // e.clientY = rect.top;
-            this.startX = e.clientX - rect.left;
-            this.startY = e.clientY - rect.top;
+            this.startX = e.clientX - this.rect.left;
+            this.startY = e.clientY - this.rect.top;
             this.drawLine(e);
-            console.log(e);
+
+
         },
         endDrawing() {
             this.drawing = false;
-            this.$refs.canvas.getContext('2d').beginPath();
+            // this.$refs.canvas.getContext('2d').beginPath();
+            if (this.straightLine == false) {
+                console.log(this.pencilPath);
+                this.ctx.beginPath();
+
+            } else {
+                this.lines.push({
+                    startX: this.startX,
+                    startY: this.startY,
+                    endX: this.mouseX,
+                    endY: this.mouseY
+                });
+                // this.clearAndRedraw();
+                this.ctx.beginPath();
+            }
+
         },
         drawLine(e) {
             if (!this.drawing) return;
-            const ctx = this.$refs.canvas.getContext('2d');
-            const rect = this.$refs.canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
 
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = '#FFAC1C';
-            ctx.lineTo(x, y);
-            ctx.stroke();
+            this.mouseX = e.clientX - this.rect.left;
+            this.mouseY = e.clientY - this.rect.top;
 
-            ctx.beginPath();
-            ctx.moveTo(x, y);
+            if (this.straightLine == false) {
+
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeStyle = '#FFAC1C';
+                this.ctx.lineTo(this.mouseX, this.mouseY);
+                this.ctx.stroke();
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.mouseX, this.mouseY);
+
+                // for (var i = 0; i < this.lines.length; ++i) {
+                //     var line = this.pencilPath[i];
+                //     line.push({ mouseX, mouseY });
+                // }
+
+                var x = this.mouseX;
+                var y = this.mouseY;
+                this.pencilPath.push({ x, y });
+
+
+
+            } else {
+
+                this.ctx.lineWidth = 2;
+                // this.ctx.beginPath();
+                // for (var i = 0; i < this.lines.length; ++i) {
+                //     var line = this.lines[i];
+                //     this.ctx.moveTo(line.startX, line.startY);
+                //     this.ctx.lineTo(line.endX, line.endY);
+                // }
+
+                //Clear and redraw the canvas
+                // this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                // this.lines.forEach(line => {
+                //     this.ctx.beginPath();
+                //     this.ctx.moveTo(line.startX, line.startY);
+                //     this.ctx.lineTo(line.endX, line.endY);
+                //     this.ctx.stroke();
+                // });
+                // this.ctx.stroke();
+                this.clearAndRedraw();
+
+                this.ctx.strokeStyle = "darkred";
+                this.ctx.lineWidth = 3;
+                this.ctx.beginPath();
+                this.ctx.moveTo(this.startX, this.startY);
+                this.ctx.lineTo(this.mouseX, this.mouseY);
+                this.ctx.stroke();
+
+            }
+
         },
         clearLine() {
             this.drawing = false;
-            const canvas = this.$refs.canvas;
-            const ctx = this.$refs.canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.lines = [];
             console.log("clear")
+        },
+        straightLineDrawing() {
+            this.straightLine = true;
+
+        },
+        //Clear and redraw the canvas
+        clearAndRedraw() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.lines.forEach(line => {
+                this.ctx.beginPath();
+                this.ctx.moveTo(line.startX, line.startY);
+                this.ctx.lineTo(line.endX, line.endY);
+                this.ctx.stroke();
+            });
+
+            for (let i = 1; i < this.pencilPath.length; i++) {
+                this.ctx.beginPath();
+                this.ctx.lineWidth = 2;
+                this.ctx.strokeStyle = '#FFAC1C';
+                this.ctx.moveTo(this.pencilPath[i - 1].x, this.pencilPath[i - 1].y);
+                this.ctx.lineTo(this.pencilPath[i].x, this.pencilPath[i].y);
+                this.ctx.stroke();
+            };
+            this.ctx.beginPath();
+            
+            
+        },
+
+        pencil() {
+            this.straightLine = false;
         }
     },
     //https://stackoverflow.com/questions/49885020/drawing-a-straight-line-using-mouse-events-on-canvas-in-javascript
