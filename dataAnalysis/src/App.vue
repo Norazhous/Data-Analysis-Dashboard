@@ -4,6 +4,8 @@ import NavigationBar from './components/NavigationBar.vue'
 import Consent from './components/Consent.vue'
 import Streams from './components/Streams.vue'
 import MeasuredDataFeedback from './components/MeasuredDataFeedback.vue'
+import TableStudentCalculation from './components/TableStudentCalculation.vue'
+import DataFetch from  './components/DataFetch.vue'
 
 export default {
   name: 'App',
@@ -13,10 +15,12 @@ export default {
     Consent,
     CanvasDrawing,
     MeasuredDataFeedback,
+    TableStudentCalculation,
+    DataFetch,
   },
   data() {
     return {
-        showConsentModal: false,
+      showConsentModal: false,
     }
   },
 }
@@ -25,11 +29,20 @@ export default {
 
 <template>
   <div id="app" class='container-fluid-sm m-0 background-white'>
-    <navigation-bar @save="saveDataToLocalStorage" @toggleconsent="showConsentModal = true"/>
-    <consent v-if='showConsentModal' @consentset="closeConsentModal"/>
-    <MeasuredDataFeedback/>
-    <CanvasDrawing />
-</div>
+    <navigation-bar @save="saveDataToLocalStorage" @toggleconsent="showConsentModal = true" />
+    <consent v-if='showConsentModal' @consentset="closeConsentModal" />
+    <MeasuredDataFeedback />
+    <div class="row">
+      <div class="col-lg-6">
+        <CanvasDrawing />
+      </div>
+      <div class="col-lg-6">
+        <TableStudentCalculation/>
+      </div>
+    </div>
+    <DataFetch/>
+    
+  </div>
   <!-- <div class="row">
     <div class="col-6">
       <div>

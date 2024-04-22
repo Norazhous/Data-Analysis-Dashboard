@@ -1,9 +1,9 @@
 <template>
-    <div class="border-dashed">
-        <div class="row">
-            <div class="col-lg-6">
-                <h2> p-h Chart for Enthalpy Value (Student)</h2>
-                <!-- <div class="row" id="buttongroup">
+    <div id='canvasPlot' class="border-dashed">
+        <!-- <div class="row">
+            <div class="col-lg-6"> -->
+        <h2> p-h Chart for Enthalpy Value (Student)</h2>
+        <!-- <div class="row" id="buttongroup">
                         <div class="col-lg-3">
                             <button type="button" class="col-12 btn btn-primary" @click="pencil()">Pencil
                             </button>
@@ -16,100 +16,54 @@
                             <button type="button" class="col-12 btn btn-primary" @click="clearLine()">Clear</button>
                         </div>
                     </div> -->
-                <div id="parent" class="image-container">
-                    <!-- <img src="../assets/R134_p_h_diagram.svg" alt="Background" @load="adjustCanvasSize"> -->
-                    <!-- <img src="/images/R134_p_h_diagram.svg" alt="Background"> -->
-                    <canvas ref="canvas" @mousedown="startDrawing" @mouseup="endDrawing" @mousemove="drawLine"></canvas>
-                </div>
-                <div class="row" id="buttongroup">
-                    <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="pencil()">Pencil
-                        </button>
-                    </div>
-                    <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="straightLineDrawing()">Straight
-                            line </button>
-                    </div>
-                    <div class="col-lg-3">
-                        <button type="button" class="col-12 btn btn-primary" @click="clearLine()">Clear</button>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-6">
-                <h2> Calculation Results (Student) </h2>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="table-light">
-                            <tr>
-                                <th colspan="5">Enthalpy Value</th>
-                            </tr>
-                            <tr>
-
-                                <th>H1(KJ/Kg)</th>
-                                <th>H2(KJ/Kg)</th>
-                                <th>H3(KJ/Kg)</th>
-                                <th>H4(KJ/Kg)</th>
-                                <th>H5(KJ/Kg)</th>
-
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td><input type="number" name="" class="inputnumber" id="H1" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="H2" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="H3" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="H4" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="H5" placeholder="22"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table">
-                        <thead class="table-light">
-                            <tr>
-                                <th colspan="3">Parameters Calculation</th>
-                            </tr>
-                            <tr>
-                                <th>Mass flowrate m(Kg/s)</th>
-                                <th>Refrigeration capacity QL(KW)</th>
-                                <th>Condensation capacity QH(KW)</th>
-                                <!-- <th>Compressor work</th>
-                            <th>Coefficient of performance </th>
-                            <th>Compressor compression ratio</th> -->
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-
-                                <td><input type="number" name="" class="inputnumber" id="m" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="QL" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="QH" placeholder="22"></td>
-                                <!-- <td><input type="number" name="" class="inputnumber" id="F" placeholder="22"></td>
-                            <td><input type="number" name="" class="inputnumber" id="E" placeholder="22"></td>
-                            <td><input type="number" name="" class="inputnumber" id="E" placeholder="22"></td> -->
-
-                            </tr>
-                        </tbody>
-                        <thead class="table-light">
-                            <tr>
-                                <th>Compressor work W(KW)</th>
-                                <th>Coefficient of performance COP</th>
-                                <th>Compressor compression ratio η</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <tr>
-                                <td><input type="number" name="" class="inputnumber" id="W" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="COP" placeholder="22"></td>
-                                <td><input type="number" name="" class="inputnumber" id="n" placeholder="22"></td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <div id="parent" class="image-container">
+            <!-- <img src="../assets/R134_p_h_diagram.svg" alt="Background" @load="adjustCanvasSize"> -->
+            <!-- <img src="/images/R134_p_h_diagram.svg" alt="Background"> -->
+            <canvas ref="canvas" @mousedown="startDrawing" @mouseup="endDrawing" @mousemove="drawLine"></canvas>
         </div>
+        <span style="color: red;">{{ message }}</span>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-primary" @click="fullScreen()">Full Screen</button>
+            <button type="button" class="btn btn-primary" @click="setupCanvas()">Load Canvas</button>
+            <!-- <button type="button" class="btn btn-primary" @click="pencil()">Pencil</button>
+            <button type="button" class="btn btn-primary" @click="straightLineDrawing()">Straight line </button> -->
+            <button type="button" class="btn btn-primary" @click="clearLine()">Clear Canvas</button>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Plot Line
+                </button>
+                <ul class="dropdown-menu">
+                    <li><input type="button" class="dropdown-item" @click="pencil()" value="Pencil" /></li>
+                    <li><input type="button" class="dropdown-item" @click="straightLineDrawing()"
+                            value="Straight line" /></li>
+                </ul>
+            </div>
+            <!-- <button type="button" class="btn btn-primary" @click="download()">Download</button> -->
+            <!-- <div class="col-lg-2">
+                <button type="button" class="btn btn-primary" @click="fullScreen()">Full Screen</button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-primary" @click="setupCanvas()">Load Canvas</button>
+            </div>
+
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-primary" @click="pencil()">Pencil
+                </button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-primary" @click="straightLineDrawing()">Straight line </button>
+            </div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-primary" @click="clearLine()">Clear</button>
+            </div> -->
+
+        </div>
+
     </div>
+
+    <!-- </div>
+    </div> -->
 
 
 </template>
@@ -134,19 +88,71 @@ export default {
             mouseY: 0,
             pencilPath: [],
             line: [],
+            loaded: false,
+            message: '',
 
         };
     },
     mounted() {
 
-        this.setupCanvas();
+        // this.setupCanvas();
         // window.addEventListener('resize', this.setupCanvas);
     },
     // beforeDestroy() {
     //     window.removeEventListener('resize', this.setupCanvas); // Clean up the event listener
     // },
     methods: {
+        // download() {    
+        //     this.canvas = this.$refs.canvas;
+        //     this.ctx = this.$refs.canvas.getContext('2d');
+        //     this.ctx.globalCompositeOperation = "destination-over";
+        //     const parent = document.getElementById('parent');
+
+        //     var background = new Image();
+        //     background.src = 'http://localhost:5173/src/assets/Chart-p-h-R134a-1.png';  // Corrected the src path.
+        //     console.log('222');
+        //     background.onload = () => {
+                
+        //         // this.background.width = '100%';
+        //         // this.background.height = '100%';
+        //         this.ctx.drawImage(background, 0, 0,300,300 * background.height / background.width);
+        //         console.log('111');
+        //         // Ensure the image is drawn before converting canvas to data URL.
+        //         var image = this.canvas.toDataURL("image/jpeg");  // Corrected the MIME type.
+        //         var link = document.createElement('a');
+        //         link.download = "my-image.jpg";
+        //         link.href = image;
+        //         // document.body.appendChild(link);  // Append the link to the body.
+        //         link.click();  // Trigger the download.
+        //         // document.body.removeChild(link);  // Clean up: remove the link after clicking.
+        //         //https://stackoverflow.com/questions/10841532/canvas-drawimage-scaling
+        //     };
+        //     background.onerror = function () {
+        //         console.error("The image could not be loaded.");
+        //     };
+
+        // },
+
+        focusToCanvas() {
+            // window.location.hash = '#parent';
+            this.$refs.canvas.scrollIntoView();
+        },
+
+        fullScreen() {
+            var el = document.getElementById('canvasPlot');
+
+            if (el.webkitRequestFullScreen) {
+                el.webkitRequestFullScreen();
+            }
+            else {
+                el.mozRequestFullScreen();
+            };
+
+
+        },
+
         setupCanvas() {
+
             this.canvas = this.$refs.canvas;
             this.ctx = this.$refs.canvas.getContext('2d');
             // const canvas = this.$refs.canvas;
@@ -156,14 +162,27 @@ export default {
             this.canvas.width = this.canvas.offsetWidth;
             this.canvas.height = this.canvas.offsetHeight;
             this.rect = this.$refs.canvas.getBoundingClientRect();
+            this.lines = [];
+            this.pencilPath = [];
+            this.drawing = false;
+            this.loaded = true;
+            this.message = '';
+
         },
 
         // drawing lines function
         startDrawing(e) {
-            this.drawing = true;
-            this.startX = e.clientX - this.rect.left;
-            this.startY = e.clientY - this.rect.top;
-            this.drawLine(e);
+            if (this.loaded == true) {
+                this.drawing = true;
+                this.startX = e.clientX - this.rect.left;
+                this.startY = e.clientY - this.rect.top;
+                this.drawLine(e);
+                console.log("start drawing")
+            } else {
+                // alert('Please load canvas before plotting')
+                this.message = 'Please load canvas before plotting.';
+            }
+
 
 
         },
@@ -217,7 +236,7 @@ export default {
 
                     this.clearAndRedraw();
 
-                    this.ctx.strokeStyle = "darkred";
+                    this.ctx.strokeStyle = "darkred";//#249701 darkred
                     this.ctx.lineWidth = 3;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.startX, this.startY);
@@ -236,6 +255,7 @@ export default {
             this.pencilPath = [];
             console.log("clear")
         },
+
         straightLineDrawing() {
             this.straightLine = true;
 
@@ -284,8 +304,9 @@ export default {
 .image-container {
     display: inline-block;
     width: 100%;
-    height: 500px;
+    /* height: 500px; */
     position: relative;
+    min-height: 80vh;
 
 }
 
