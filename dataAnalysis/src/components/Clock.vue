@@ -71,13 +71,13 @@ export default {
           let minutes = Math.floor(seconds/60);     //number of full minutes
           seconds = Math.floor(seconds % 60);               //remaining seconds
 
-          minutes = this.addZeroes(minutes);
-          seconds = this.addZeroes(seconds);
+        //   minutes = this.addZeroes(minutes);
+        //   seconds = this.addZeroes(seconds);
 
           if(interval > 0){
               return minutes + " min : " + seconds + " secs"; 
           } else {
-              this.$store.dispatch('setSessionExpired', true);
+            //   this.$store.dispatch('setSessionExpired', true);
               clearInterval(this.interval_id);
               return 'ENDED'
           }

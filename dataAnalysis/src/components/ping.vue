@@ -1,15 +1,13 @@
 <template>
   <div>
     <p>{{ msg }}</p>
-    <input id="postTest" type="number">
-    <input id="postTest1" type="number">
     <button @click="test"> add</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'test',
@@ -23,6 +21,22 @@ export default {
   created() {
     this.getMessage();
   },
+  computed: {
+        ...mapGetters([
+            'GetMeasuredTime',
+            'GetT1',
+            'GetT2',
+            'GetT3',
+            'GetT4',
+            'GetT5',
+            'GetP1',
+            'GetP2',
+            'GetP3',
+            'GetE',
+            'GetF',
+            'GetASP',
+        ])
+    },
   methods: {
     getMessage() {
       const path = 'http://127.0.0.1:5000/test';
@@ -50,16 +64,25 @@ export default {
 
 
     test() {
-      this.H3 = document.getElementById('postTest').value;
-      this.H4 = document.getElementById('postTest1').value;
-      if (this.H3 != ''&&this.H4 != '') {
+     
+      // if (this.H3 != ''&&this.H4 != '') {
         const payload = {
-          'H3': Number(this.H3),
-          'H4': Number(this.H4),
+          'MeasuredTime': Number(this.GetMeasuredTime),
+          'T1': Number(this.GetT1),
+          'T2': Number(this.GetT2),
+          'T3': Number(this.GetT3),
+          'T4': Number(this.GetT4),
+          'T5': Number(this.GetT5),
+          'P1': Number(this.GetP1),
+          'P2': Number(this.GetP2),
+          'P3': Number(this.GetP3),
+          'E': Number(this.GetE),
+          'F': Number(this.GetF),
+          'ASP': Number(this.GetASP),
         };
         this.postMessage(payload);
         console.log(payload);
-      }
+      // }
      
     }
   }

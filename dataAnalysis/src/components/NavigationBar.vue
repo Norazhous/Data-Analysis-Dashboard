@@ -5,7 +5,7 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark background-primary">
     <div class="container-fluid">
         <img src="/practable-icon.png" width="30" height="30" alt="">
-      <a class="navbar-brand" href="#">Data Analysis Dashboard: {{ getExperiment }}</a>
+      <a class="navbar-brand" href="#">Data Analysis Dashboard: Compression Refrigeration Experiment </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -113,8 +113,8 @@ export default {
   },
   computed:{
     ...mapGetters([
-        'getLogUUID',
-        'getExperiment'
+        // 'getLogUUID',
+        // 'getExperiment'
     ]),
 
   },
