@@ -44,11 +44,11 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr>
-                                <td>22</td>
-                                <td>22</td>
-                                <td>22</td>
-                                <td>22</td>
-                                <td>22</td>
+                                <td>10%</td>
+                                <td>7%</td>
+                                <td>19%</td>
+                                <td>20%</td>
+                                <td>2%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -67,9 +67,9 @@
                         <tbody class="table-group-divider">
                             <tr>
 
-                                <td>22</td>
-                                <td>22</td>
-                                <td>22</td>
+                                <td>10%</td>
+                                <td>7%</td>
+                                <td>19%</td>
                            
                             </tr>
                         </tbody>
@@ -82,9 +82,9 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr>
-                                <td>22</td>
-                                <td>22</td>
-                                <td>22</td>
+                                <td>19%</td>
+                                <td>20%</td>
+                                <td>2%</td>
 
                             </tr>
                         </tbody>
