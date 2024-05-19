@@ -2,10 +2,9 @@
 import CanvasDrawing from './components/CanvasDrawing.vue'
 import NavigationBar from './components/NavigationBar.vue'
 import Consent from './components/Consent.vue'
-// import Streams from './components/Streams.vue'
 import MeasuredDataFeedback from './components/MeasuredDataFeedback.vue'
 import TableStudentCalculation from './components/TableStudentCalculation.vue'
-import DataFetch from  './components/DataFetch.vue'
+import DataCompare from  './components/DataCompare.vue'
 import { RouterView } from 'vue-router'
 import ping from './components/ping.vue'
 
@@ -14,12 +13,11 @@ export default {
   name: 'App',
   components: {
     NavigationBar,
-    // Streams,
     Consent,
     CanvasDrawing,
     MeasuredDataFeedback,
     TableStudentCalculation,
-    DataFetch,
+    DataCompare,
     ping,
   },
   data() {
@@ -33,7 +31,6 @@ export default {
 
 <template>
   <router-view />
-  <ping />
   <div id="app" class='container-fluid-sm m-0 background-white'>
     <navigation-bar @save="saveDataToLocalStorage" @toggleconsent="showConsentModal = true" />
     <consent v-if='showConsentModal' @consentset="closeConsentModal" />
@@ -45,8 +42,11 @@ export default {
       <div class="col-lg-6">
         <TableStudentCalculation/>
       </div>
+      <div>
+        <ping />
+      </div>
     </div>
-    <DataFetch/>
+    <DataCompare/>
     
   </div>
   <!-- <div class="row">

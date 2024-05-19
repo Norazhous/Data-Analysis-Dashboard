@@ -15,7 +15,7 @@ const dataStore = {
         E: 0,
         ASP: 0,
 
-        //calculated data
+        // student calculation data
         H1: 0,
         H2: 0,
         H3: 0,
@@ -27,6 +27,26 @@ const dataStore = {
         W: 0,
         COP: 0,
         n: 0,
+
+        // Deviation data
+        H1_Dev: 0,
+        H2_Dev: 0,
+        H3_Dev: 0,
+        H4_Dev: 0,
+        H5_Dev: 0,
+        m_Dev: 0,
+        QL_Dev: 0,
+        QH_Dev: 0,
+        W_Dev: 0,
+        COP_Dev: 0,
+        n_Dev: 0,
+
+        // Saturated value 
+        SaturT_P1: 0,
+        SaturT_P2: 0,
+        SaturP_T3: 0,
+        SaturP_T5: 0,
+
     }),
     mutations: {
         //set the measured parameters value according to the student input
@@ -101,6 +121,56 @@ const dataStore = {
         SETn(state, value) {
             state.n = value;
         },
+
+        // set deviation data from server
+        SETH1_Dev(state, value) {
+            state.H1_Dev = value;
+        },
+        SETH2_Dev(state, value) {
+            state.H2_Dev = value;
+        },
+        SETH3_Dev(state, value) {
+            state.H3_Dev = value;
+        },
+        SETH4_Dev(state, value) {
+            state.H4_Dev = value;
+        },
+        SETH5_Dev(state, value) {
+            state.H5_Dev = value;
+        },
+        SETm_Dev(state, value) {
+            state.m_Dev = value;
+        },
+        SETQL_Dev(state, value) {
+            state.QL_Dev = value;
+        },
+        SETQH_Dev(state, value) {
+            state.QH_Dev = value;
+        },
+        SETW_Dev(state, value) {
+            state.W_Dev = value;
+        },
+        SETCOP_Dev(state, value) {
+            state.COP_Dev = value;
+        },
+        SETn_Dev(state, value) {
+            state.n_Dev = value;
+        },
+
+        // set saturated data from server
+        SETSaturT_P1(state, value) {
+            state.SaturT_P1 = value;
+        },
+        SETSaturT_P2(state, value) {
+            state.SaturT_P2 = value;
+        },
+        SETSaturP_T3(state, value) {
+            state.SaturP_T3 = value;
+        },
+        SETSaturP_T5(state, value) {
+            state.SaturP_T5 = value;
+        },
+
     },
     actions: {
         //commit the mutation of setting value of measured data 
@@ -143,37 +213,86 @@ const dataStore = {
 
         //commit the mutation of setting value of students calculation 
         SetH1(context, value) {
-            context.commit('SETH1 ', value)
+            context.commit('SETH1', value)
         },
         SetH2(context, value) {
-            context.commit('SETH2 ', value)
+            context.commit('SETH2', value)
         },
         SetH3(context, value) {
-            context.commit('SETH3 ', value)
+            context.commit('SETH3', value)
         },
         SetH4(context, value) {
-            context.commit('SETH4 ', value)
+            context.commit('SETH4', value)
         },
         SetH5(context, value) {
-            context.commit('SETH5 ', value)
+            context.commit('SETH5', value)
         },
         Setm(context, value) {
-            context.commit('SETm  ', value)
+            context.commit('SETm', value)
         },
         SetQL(context, value) {
-            context.commit('SETQL ', value)
+            context.commit('SETQL', value)
         },
         SetQH(context, value) {
-            context.commit('SETQH ', value)
+            context.commit('SETQH', value)
         },
         SetW(context, value) {
-            context.commit('SETW  ', value)
+            context.commit('SETW', value)
         },
-        SetCO(context, value) {
+        SetCOP(context, value) {
             context.commit('SETCOP', value)
         },
         Setn(context, value) {
-            context.commit('SETn  ', value)
+            context.commit('SETn', value)
+        },
+
+        //commit the dev data from server
+        SetH1_Dev(context, value) {
+            context.commit('SETH1_Dev', value)
+        },
+        SetH2_Dev(context, value) {
+            context.commit('SETH2_Dev', value)
+        },
+        SetH3_Dev(context, value) {
+            context.commit('SETH3_Dev', value)
+        },
+        SetH4_Dev(context, value) {
+            context.commit('SETH4_Dev', value)
+        },
+        SetH5_Dev(context, value) {
+            context.commit('SETH5_Dev', value)
+        },
+        Setm_Dev(context, value) {
+            context.commit('SETm_Dev', value)
+        },
+        SetQL_Dev(context, value) {
+            context.commit('SETQL_Dev', value)
+        },
+        SetQH_Dev(context, value) {
+            context.commit('SETQH_Dev', value)
+        },
+        SetW_Dev(context, value) {
+            context.commit('SETW_Dev', value)
+        },
+        SetCOP_Dev(context, value) {
+            context.commit('SETCOP_Dev', value)
+        },
+        Setn_Dev(context, value) {
+            context.commit('SETn_Dev', value)
+        },
+
+        // commit saturated value from server
+        SetSaturT_P1(context, value) {
+            context.commit('SETSaturT_P1', value)
+        },
+        SetSaturT_P2(context, value) {
+            context.commit('SETSaturT_P2', value)
+        },
+        SetSaturP_T3(context, value) {
+            context.commit('SETSaturP_T3', value)
+        },
+        SetSaturP_T5(context, value) {
+            context.commit('SETSaturP_T5', value)
         },
 
     },
@@ -252,8 +371,59 @@ const dataStore = {
             return state.n
         },
 
-    },
+        //get dev data
+        GetH1_Dev(state) {
+            return state.H1_Dev
+        },
+        GetH2_Dev(state) {
+            return state.H2_Dev
+        },
+        GetH3_Dev(state) {
+            return state.H3_Dev
+        },
+        GetH4_Dev(state) {
+            return state.H4_Dev
+        },
+        GetH5_Dev(state) {
+            return state.H5_Dev
+        },
+        Getm_Dev(state) {
+            return state.m_Dev
+        },
+        GetQL_Dev(state) {
+            return state.QL_Dev
+        },
+        GetQH_Dev(state) {
+            return state.QH_Dev
+        },
+        GetW_Dev(state) {
+            return state.W_Dev
+        },
+        GetCOP_Dev(state) {
+            return state.COP_Dev
+        },
+        Getn_Dev(state) {
+            return state.n_Dev
+        },
 
+        // get saturated value
+        GetSaturT_P1(state) {
+            return state.SaturT_P1
+        },
+        GetSaturT_P2(state) {
+            return state.SaturT_P2
+        },
+        GetSaturP_T3(state) {
+            return state.SaturP_T3
+        },
+        GetSaturP_T5(state) {
+            return state.SaturP_T5
+        },
+
+
+
+
+    },
 }
 
 export default dataStore;
