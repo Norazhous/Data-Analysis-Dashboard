@@ -73,7 +73,7 @@
             </table>
 
         </div>
-        <button class="btn btn-primary" @click="GetDataformInput">Submit</button>
+        <button class="btn btn-primary" @click="GetDataformInput">Confirm</button>
     </div>
     <!-- </div>
     </div> -->

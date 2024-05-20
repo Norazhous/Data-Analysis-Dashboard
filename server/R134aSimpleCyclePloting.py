@@ -2,6 +2,8 @@ import CoolProp
 from CoolProp.Plots import PropertyPlot
 from CoolProp.Plots import SimpleCompressionCycle
 import matplotlib.pyplot as plt
+from app import Parameters_MeasuredData,Parameters_StudentCaculation
+
 
 # introduce CoolProp
 CP = CoolProp.CoolProp

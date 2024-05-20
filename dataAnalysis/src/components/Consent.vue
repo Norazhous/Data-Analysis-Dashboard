@@ -5,7 +5,7 @@
 
 <template>
 <transition name='fade'>
-    <div class="modal" id='consent-modal' tabindex="-1">
+    <div class="modal" id='consent-modal' tabindex="-1" >
         <div class="modal-dialog">
           <div class="modal-content text-start">
             <div class="modal-header">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id='consent-yes-button' @click="consent">Confirm</button>
+                    <button type="button" class="btn btn-primary" id='consent-yes-button' @click="consent()">Confirm</button>
                 </div>
 
               </div>
@@ -60,17 +60,18 @@ export default {
   data () {
     return {
         logging: false,
+        showConsent:true,
     }
   },
   components: {
     
   },
   computed:{
-     ...mapGetters([
-         'getUsesLocalStorage',
-         'getCourse',
-         'getExperiment'
-     ])
+    //  ...mapGetters([
+    //      'getUsesLocalStorage',
+    //      'getCourse',
+    //      'getExperiment'
+    //  ])
   },
   watch:{
       
@@ -84,18 +85,22 @@ export default {
   },
   methods: {
       consent(){
-          this.$store.dispatch('setLoggingConsent', this.logging);
-          if(this.getUsesLocalStorage){
-            let course = this.getCourse;
-            let exp = this.getExperiment;
-            const item = `consent-${exp}-${course}`
-              window.localStorage.setItem(item, this.logging);
-          }
-          
-
+          // this.$store.dispatch('setLoggingConsent', this.logging);
+          // if(this.getUsesLocalStorage){
+          //   let course = this.getCourse;
+          //   let exp = this.getExperiment;
+          //   const item = `consent-${exp}-${course}`
+          //     window.localStorage.setItem(item, this.logging);
+          // }
+          // // this.showConsent1();
           this.$emit('consentset');
-          
-      }
+
+      },
+
+      // showConsent1(){
+      //   this.showConsent =false;
+      //   console.log(this.showConsent);
+      // },
       
   }
 }

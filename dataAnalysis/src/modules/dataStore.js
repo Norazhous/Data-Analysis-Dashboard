@@ -47,6 +47,9 @@ const dataStore = {
         SaturP_T3: 0,
         SaturP_T5: 0,
 
+        //img_data 
+        img_data: null,
+
     }),
     mutations: {
         //set the measured parameters value according to the student input
@@ -170,6 +173,11 @@ const dataStore = {
         SETSaturP_T5(state, value) {
             state.SaturP_T5 = value;
         },
+
+        //set img data from server
+        SETimg_data(state,value){
+            state.img_data = value;
+        }
 
     },
     actions: {
@@ -295,6 +303,11 @@ const dataStore = {
             context.commit('SETSaturP_T5', value)
         },
 
+        //commit img_data value from server
+        Setimg_data(context,value){
+            context.commit('SETimg_data',value)
+        },
+
     },
     getters: {
 
@@ -418,6 +431,11 @@ const dataStore = {
         },
         GetSaturP_T5(state) {
             return state.SaturP_T5
+        },
+
+        //get img_data
+        Getimg_data(state){
+            return state.img_data
         },
 
 

@@ -4,7 +4,7 @@ import NavigationBar from './components/NavigationBar.vue'
 import Consent from './components/Consent.vue'
 import MeasuredDataFeedback from './components/MeasuredDataFeedback.vue'
 import TableStudentCalculation from './components/TableStudentCalculation.vue'
-import DataCompare from  './components/DataCompare.vue'
+import DataCompare from './components/DataCompare.vue'
 import { RouterView } from 'vue-router'
 import ping from './components/ping.vue'
 
@@ -25,6 +25,14 @@ export default {
       showConsentModal: false,
     }
   },
+  computed: {
+    
+  },
+  methods:{
+   closeConsentModal(){
+    this.showConsentModal =false;
+   }
+  }
 }
 
 </script>
@@ -40,14 +48,14 @@ export default {
         <CanvasDrawing />
       </div>
       <div class="col-lg-6">
-        <TableStudentCalculation/>
+        <TableStudentCalculation />
       </div>
       <div>
         <ping />
       </div>
     </div>
-    <DataCompare/>
-    
+    <DataCompare />
+
   </div>
   <!-- <div class="row">
     <div class="col-6">

@@ -1,8 +1,24 @@
 <template>
-  <div>
-    <p>{{ msg }}</p>
-    <button @click="SubmitMeasuredData"> SubmitMeasuredData</button>
-    <button @click="SubmitCalculationData"> SubmitCalculationData</button>
+  <div class="border-dashed">
+    <!-- <p>{{ msg }}</p> -->
+    <h2> Submit data to the server and get feedback </h2>
+    <p>(This section will only be displayed after students agree the consent)</p>
+    <div class="row">
+      <div class="col-lg-3">
+       
+      </div>
+      <div class="col-lg-3">
+        <button class="btn btn-primary" @click="SubmitMeasuredData"> Submit Measured Data</button>
+      </div>
+      <div class="col-lg-3">
+        <button class="btn btn-primary" @click="SubmitCalculationData"> Submit Calculation Data</button>
+      </div>
+      <div class="col-lg-3">
+       
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -71,6 +87,8 @@ export default {
       'SetSaturT_P2',
       'SetSaturP_T3',
       'SetSaturP_T5',
+      //get img_data from server and set it in the store
+      'Setimg_data'
     ]),
 
     getMessage() {
@@ -89,22 +107,23 @@ export default {
           // this.SetW_DEV(res.data.Parameters_DeviationCaculation.W_Dev);
           // this.SetCOP_DEV(res.data.Parameters_DeviationCaculation.COP_Dev);
           // this.Setn_DEV(res.data.Parameters_DeviationCaculation.n_Dev);
-          this.$store.dispatch('SetH1_Dev',res.data.Parameters_DeviationCaculation.H1_Dev);
-          this.$store.dispatch('SetH2_Dev',res.data.Parameters_DeviationCaculation.H2_Dev);
-          this.$store.dispatch('SetH3_Dev',res.data.Parameters_DeviationCaculation.H3_Dev);
-          this.$store.dispatch('SetH4_Dev',res.data.Parameters_DeviationCaculation.H4_Dev);
-          this.$store.dispatch('SetH5_Dev',res.data.Parameters_DeviationCaculation.H5_Dev);
-          this.$store.dispatch('Setm_Dev',res.data.Parameters_DeviationCaculation.m_Dev);
-          this.$store.dispatch('SetQL_Dev',res.data.Parameters_DeviationCaculation.QL_Dev);
-          this.$store.dispatch('SetQH_Dev',res.data.Parameters_DeviationCaculation.QH_Dev);
-          this.$store.dispatch('SetW_Dev',res.data.Parameters_DeviationCaculation.W_Dev);
-          this.$store.dispatch('SetCOP_Dev',res.data.Parameters_DeviationCaculation.COP_Dev);
-          this.$store.dispatch('Setn_Dev',res.data.Parameters_DeviationCaculation.n_Dev);
-          this.$store.dispatch('SetSaturT_P1',res.data.Parameters_SaturatedValue.SaturT_P1);
-          this.$store.dispatch('SetSaturT_P2',res.data.Parameters_SaturatedValue.SaturT_P2);
-          this.$store.dispatch('SetSaturP_T3',res.data.Parameters_SaturatedValue.SaturP_T3);
-          this.$store.dispatch('SetSaturP_T5',res.data.Parameters_SaturatedValue.SaturP_T5);
-
+          this.$store.dispatch('SetH1_Dev', res.data.Parameters_DeviationCaculation.H1_Dev);
+          this.$store.dispatch('SetH2_Dev', res.data.Parameters_DeviationCaculation.H2_Dev);
+          this.$store.dispatch('SetH3_Dev', res.data.Parameters_DeviationCaculation.H3_Dev);
+          this.$store.dispatch('SetH4_Dev', res.data.Parameters_DeviationCaculation.H4_Dev);
+          this.$store.dispatch('SetH5_Dev', res.data.Parameters_DeviationCaculation.H5_Dev);
+          this.$store.dispatch('Setm_Dev', res.data.Parameters_DeviationCaculation.m_Dev);
+          this.$store.dispatch('SetQL_Dev', res.data.Parameters_DeviationCaculation.QL_Dev);
+          this.$store.dispatch('SetQH_Dev', res.data.Parameters_DeviationCaculation.QH_Dev);
+          this.$store.dispatch('SetW_Dev', res.data.Parameters_DeviationCaculation.W_Dev);
+          this.$store.dispatch('SetCOP_Dev', res.data.Parameters_DeviationCaculation.COP_Dev);
+          this.$store.dispatch('Setn_Dev', res.data.Parameters_DeviationCaculation.n_Dev);
+          this.$store.dispatch('SetSaturT_P1', res.data.Parameters_SaturatedValue.SaturT_P1);
+          this.$store.dispatch('SetSaturT_P2', res.data.Parameters_SaturatedValue.SaturT_P2);
+          this.$store.dispatch('SetSaturP_T3', res.data.Parameters_SaturatedValue.SaturP_T3);
+          this.$store.dispatch('SetSaturP_T5', res.data.Parameters_SaturatedValue.SaturP_T5);
+          this.$store.dispatch('Setimg_data', res.data.img_data);
+          console.log(this.msg);
         })
         .catch((error) => {
           console.log(error);

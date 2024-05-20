@@ -8,6 +8,20 @@ from app_globalVal import (
     Parameters_SaturatedValue,
 )
 from app_R134aSimpleCyclePloting import systemCalculation
+from PIL import Image
+import base64
+import io
+
+# get the img and encode it 
+def imgEncode():
+    im = Image.open("server/test.png")
+    data = io.BytesIO()
+    im.save(data,"png")
+    encoded_img_data = base64.b64encode(data.getvalue())
+    # print(encoded_img_data.decode('utf-8'))
+
+    return encoded_img_data.decode('utf-8')
+    
 
 
 # instantiate the app
@@ -75,6 +89,8 @@ def test():
                 == 1
             ):
                 systemCalculation()
+                imgEncode()
+
         else:
             response_object["message"] = "Data hasn't been updated"
     # elif Response.status_code == 500:
@@ -83,7 +99,8 @@ def test():
         response_object["Parameters_StudentCaculation"] = Parameters_StudentCaculation
         response_object["Parameters_SystemCaculation"] = Parameters_SystemCaculation
         response_object["Parameters_DeviationCaculation"] = Parameters_DeviationCaculation
-        response_object["Parameters_SaturatedValue"] = Parameters_SaturatedValue   
+        response_object["Parameters_SaturatedValue"] = Parameters_SaturatedValue 
+        response_object['img_data'] =  imgEncode()
     return jsonify(response_object)
 
     # return jsonify({

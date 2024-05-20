@@ -155,7 +155,7 @@ export default {
 
         ]),
 
-        GetDataformInput(){
+        GetDataformInput() {
 
             this.SetMeasuredTime(document.getElementById('time').value);
             this.SetT1(document.getElementById('T1').value);
@@ -319,12 +319,33 @@ export default {
 
         },
 
+        ClearformInput() {
+
+            document.getElementById('time').value = 0;
+            document.getElementById('T1').value = 0;
+            document.getElementById('T2').value = 0;
+            document.getElementById('T3').value = 0;
+            document.getElementById('T4').value = 0;
+            document.getElementById('T5').value = 0;
+            document.getElementById('P1').value = 0;
+            document.getElementById('P2').value = 0;
+            document.getElementById('P3').value = 0;
+            document.getElementById('E').value = 0;
+            document.getElementById('F').value = 0;
+            document.getElementById('ASP').value = 0;
+            // console.log(this.GetMeasuredTime, this.GetT1, this.GetT2,this.GetT3,this.GetT4,this.GetT5,this.GetP1,this.GetP2,this.GetP3,this.GetE,this.GetF,this.GetASP);
+        },
+
         //clear and reset the data in the input form and chart
         reset() {
             this.updateFlag = false;
             this.MeasuredDataChart.data.datasets[0].data = [];
             this.MeasuredDataChart.data.datasets[1].data = [];
             this.MeasuredDataChart.update();
+            this.ClearformInput();
+            this.GetDataformInput();
+            console.log(this.GetMeasuredTime);
+
         },
 
 
