@@ -1,4 +1,10 @@
-# Data Analysis Client
+# Data analysis UI for compression refrigeration experiment.
+
+The server is developed in Python; Flask is used for web communication; and the Coolprop library is used for R134a property calculation.
+
+The client is developed in Vue.js.
+
+# Client
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -18,6 +24,8 @@ npm install
 
 ### Compile and Hot-Reload for Development
 
+cd the path to /dataAnalysis
+
 ```sh
 npm run dev
 ```
@@ -26,4 +34,26 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+# Server
+
+This template should help running the program.
+
+## project running 
+
+run app.py
+
+## libraries included
+
+Flask(https://flask.palletsprojects.com/en/3.0.x/): 
+
+```
+pip install Flask
+```
+
+CoolProp(http://www.coolprop.org/index.html#):
+
+```
+pip install coolprop
 ```
