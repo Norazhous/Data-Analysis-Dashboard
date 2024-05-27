@@ -33,8 +33,8 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # sanity check route
-@app.route("/test", methods=["GET", "POST"])
-def test():
+@app.route("/enthapy", methods=["GET", "POST"])
+def enthapy():
     response_object = {"status": "success"}
     if request.method == "POST":
         post_data = request.get_json()

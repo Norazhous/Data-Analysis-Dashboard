@@ -27,7 +27,7 @@ import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'test',
+  name: 'enthapy',
   data() {
     return {
       msg: 'Hello!',
@@ -92,7 +92,7 @@ export default {
     ]),
 
     getMessage() {
-      const path = 'http://127.0.0.1:5000/test';
+      const path = 'http://127.0.0.1:5000/enthapy';
       axios.get(path)
         .then((res) => {
           this.msg = res.data;
@@ -131,7 +131,7 @@ export default {
     },
 
     postMessage(payload) {
-      const path = 'http://127.0.0.1:5000/test';
+      const path = 'http://127.0.0.1:5000/enthapy';
       axios.post(path, payload)
         .then(() => {
           this.getMessage();
@@ -139,7 +139,7 @@ export default {
         .catch((error) => {
 
           console.log(error);
-          alert(error.response.data);
+          // alert(error.response.data);
           // this.getMessage();
         });
     },

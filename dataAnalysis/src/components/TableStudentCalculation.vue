@@ -21,11 +21,11 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td><input type="number" name="" class="inputnumber" id="H1" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H2" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H3" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H4" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H5" placeholder="0"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H1" placeholder="0"  value="400"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H2" placeholder="0"  value="400"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H3" placeholder="0"  value="200"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H4" placeholder="0"  value="200"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H5" placeholder="0"  value="400"></td>
                     </tr>
                 </tbody>
             </table>
@@ -46,9 +46,9 @@
                 <tbody class="table-group-divider">
                     <tr>
 
-                        <td><input type="number" name="" class="inputnumber" id="m" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="QL" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="QH" placeholder="0"></td>
+                        <td><input type="number" name="" class="inputnumber" id="m" placeholder="0" value="0.01"></td>
+                        <td><input type="number" name="" class="inputnumber" id="QL" placeholder="0" value="60"></td>
+                        <td><input type="number" name="" class="inputnumber" id="QH" placeholder="0" value="50"></td>
                         <!-- <td><input type="number" name="" class="inputnumber" id="F" placeholder="22"></td>
                             <td><input type="number" name="" class="inputnumber" id="E" placeholder="22"></td>
                             <td><input type="number" name="" class="inputnumber" id="E" placeholder="22"></td> -->
@@ -64,9 +64,9 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td><input type="number" name="" class="inputnumber" id="W" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="COP" placeholder="0"></td>
-                        <td><input type="number" name="" class="inputnumber" id="n" placeholder="0"></td>
+                        <td><input type="number" name="" class="inputnumber" id="W" placeholder="0"  value="250"></td>
+                        <td><input type="number" name="" class="inputnumber" id="COP" placeholder="0"  value="5"></td>
+                        <td><input type="number" name="" class="inputnumber" id="n" placeholder="0"  value="5"></td>
 
                     </tr>
                 </tbody>
