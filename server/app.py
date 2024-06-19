@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response,render_template
+from flask import Flask, jsonify, request, Response, render_template
 from flask_cors import CORS
 from app_globalVal import (
     Parameters_MeasuredData,
@@ -11,17 +11,77 @@ from app_R134aSimpleCyclePloting import systemCalculation
 from PIL import Image
 import base64
 import io
+import os
+import json
 
-# get the img and encode it 
+
+# save the Json in a Json file
+def saveDataFile(saveData):
+    # define the name of the directory
+    path = "./uuid/testUUID"
+
+    # check whether directory already exists
+    try:
+        os.mkdir(path)
+        print("Folder %s created!" % path)
+    except FileExistsError:
+        print("Folder %s already exists" % path)
+
+    # define the name of the directory with its subdirectories
+    # path_sub = "./uuid/testUUID"
+    # os.makedirs(path_sub)
+    jsonDatasave = saveData.copy()
+    jsonDatasave.pop("img_data")
+    # feeds =[]
+    # with open("./uuid/testUUID/savedata1.json", mode='w', encoding='utf-8') as f:
+    #     json.dump([], f, indent = 6)
+    # with open("./uuid/testUUID/savedata1.json", mode='w', encoding='utf-8') as feedsjson:
+    #     feeds.append(jsonDatasave)
+    #     json.dump(feeds, feedsjson, indent = 6)
+    
+    # 1. Read file contents
+    with open("./uuid/testUUID/savedata1.json", "r",encoding='utf-8') as file:
+        data = json.load(file)
+    # 2. Update json object
+    data.append(jsonDatasave)
+    # 3. Write json file
+    with open("./uuid/testUUID/savedata1.json", "w",encoding='utf-8') as file:
+        json.dump(data, file,indent = 6)
+    # save_file = open("./uuid/testUUID/savedata1.json", "w")  
+    # json.dump(jsonDatasave, save_file, indent = 6)  
+    # save_file.close()  
+
+# save img in a json file
+def saveImgFile(saveImg):
+    # define the name of the directory
+    path = "./uuid/testUUID"
+
+    # check whether directory already exists
+    try:
+        os.mkdir(path)
+        print("Folder %s created!" % path)
+    except FileExistsError:
+        print("Folder %s already exists" % path)
+
+    # define the name of the directory with its subdirectories
+    # path_sub = "./uuid/testUUID"
+    # os.makedirs(path_sub)
+    jsonDatasave = saveImg.copy()
+    jsonImgsave = jsonDatasave.pop("img_data")
+    save_file = open("./uuid/testUUID/saveimg.json", "w")  
+    json.dump(jsonImgsave, save_file, indent = 6)  
+    save_file.close()
+
+
+# get the img and encode it
 def imgEncode():
-    im = Image.open("server/test.png")
+    im = Image.open("server/uuid/test.png")
     data = io.BytesIO()
-    im.save(data,"png")
+    im.save(data, "png")
     encoded_img_data = base64.b64encode(data.getvalue())
     # print(encoded_img_data.decode('utf-8'))
 
-    return encoded_img_data.decode('utf-8')
-    
+    return encoded_img_data.decode("utf-8")
 
 
 # instantiate the app
@@ -98,15 +158,23 @@ def enthapy():
         response_object["Parameters_MeasuredData"] = Parameters_MeasuredData
         response_object["Parameters_StudentCaculation"] = Parameters_StudentCaculation
         response_object["Parameters_SystemCaculation"] = Parameters_SystemCaculation
-        response_object["Parameters_DeviationCaculation"] = Parameters_DeviationCaculation
-        response_object["Parameters_SaturatedValue"] = Parameters_SaturatedValue 
-        response_object['img_data'] =  imgEncode()
+        response_object["Parameters_DeviationCaculation"] = (
+            Parameters_DeviationCaculation
+        )
+        response_object["Parameters_SaturatedValue"] = Parameters_SaturatedValue
+        response_object["img_data"] = imgEncode()
+
+        saveDataFile(response_object)
+        saveImgFile(response_object)
+        # print(response_object)
+        
     return jsonify(response_object)
 
     # return jsonify({
     #     'status': 'success',
     #     'parameters': Parameters,
     # })
+
 
 # @app.errorhandler(500)
 # def handle_server_error(error):

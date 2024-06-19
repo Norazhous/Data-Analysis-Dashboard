@@ -3,25 +3,6 @@
         <!-- <div class="row">
             <div class="col-lg-6"> -->
         <h2> p-h Chart for Enthalpy Value (Student)</h2>
-        <!-- <div class="row" id="buttongroup">
-                        <div class="col-lg-3">
-                            <button type="button" class="col-12 btn btn-primary" @click="pencil()">Pencil
-                            </button>
-                        </div>
-                        <div class="col-lg-3">
-                            <button type="button" class="col-12 btn btn-primary" @click="straightLineDrawing()">Straight
-                                line </button>
-                        </div>
-                        <div class="col-lg-3">
-                            <button type="button" class="col-12 btn btn-primary" @click="clearLine()">Clear</button>
-                        </div>
-                    </div> -->
-        <div id="parent" class="image-container">
-            <!-- <img src="../assets/R134_p_h_diagram.svg" alt="Background" @load="adjustCanvasSize"> -->
-            <!-- <img src="/images/R134_p_h_diagram.svg" alt="Background"> -->
-            <canvas ref="canvas" @mousedown="startDrawing" @mouseup="endDrawing" @mousemove="drawLine"></canvas>
-        </div>
-        <span style="color: red;">{{ message }}</span>
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
             <button type="button" class="btn btn-primary" @click="fullScreen()">Full Screen</button>
             <button type="button" class="btn btn-primary" @click="setupCanvas()">Load Canvas</button>
@@ -59,6 +40,27 @@
             </div> -->
 
         </div>
+        <span style="color: red;">{{ message }}</span>
+        <!-- <div class="row" id="buttongroup">
+                        <div class="col-lg-3">
+                            <button type="button" class="col-12 btn btn-primary" @click="pencil()">Pencil
+                            </button>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="col-12 btn btn-primary" @click="straightLineDrawing()">Straight
+                                line </button>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="col-12 btn btn-primary" @click="clearLine()">Clear</button>
+                        </div>
+                    </div> -->
+        <div id="parent" class="image-container">
+            <!-- <img src="../assets/R134_p_h_diagram.svg" alt="Background" @load="adjustCanvasSize"> -->
+            <!-- <img src="/images/R134_p_h_diagram.svg" alt="Background"> -->
+            <canvas ref="canvas" @mousedown="startDrawing" @mouseup="endDrawing" @mousemove="drawLine"></canvas>
+        </div>
+       
+       
 
     </div>
 
@@ -139,7 +141,7 @@ export default {
         },
 
         fullScreen() {
-            var el = document.getElementById('canvasPlot');
+            var el = document.getElementById("canvasPlot");
 
             if (el.webkitRequestFullScreen) {
                 el.webkitRequestFullScreen();
