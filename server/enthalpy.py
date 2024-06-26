@@ -1,13 +1,8 @@
 from flask import Flask, jsonify, request, Response, render_template
 from flask_cors import CORS
-from app_globalVal import (
-    Parameters_MeasuredData,
-    Parameters_StudentCaculation,
-    Parameters_SystemCaculation,
-    Parameters_DeviationCaculation,
-    Parameters_SaturatedValue,
-)
-from app_R134aSimpleCyclePloting import systemCalculation
+from modules import globalVariables
+
+from modules import R134aSimpleCycleCalculationPloting
 from PIL import Image
 import base64
 import io
@@ -18,72 +13,65 @@ import json
 # save the Json in a Json file
 def saveDataFile(saveData):
     # define the name of the directory
-    path = "./uuid/testUUID"
-
+    path = "./server/uuid/testUUID" 
     # check whether directory already exists
     try:
         os.mkdir(path)
         print("Folder %s created!" % path)
     except FileExistsError:
         print("Folder %s already exists" % path)
-
     # define the name of the directory with its subdirectories
-    # path_sub = "./uuid/testUUID"
-    # os.makedirs(path_sub)
     jsonDatasave = saveData.copy()
     jsonDatasave.pop("img_data")
-    # feeds =[]
-    # with open("./uuid/testUUID/savedata1.json", mode='w', encoding='utf-8') as f:
-    #     json.dump([], f, indent = 6)
-    # with open("./uuid/testUUID/savedata1.json", mode='w', encoding='utf-8') as feedsjson:
-    #     feeds.append(jsonDatasave)
-    #     json.dump(feeds, feedsjson, indent = 6)
     
+    if os.path.exists("./server/uuid/testUUID/testUUID_savedata1.json"):
     # 1. Read file contents
-    with open("./uuid/testUUID/savedata1.json", "r",encoding='utf-8') as file:
-        data = json.load(file)
+        with open("./server/uuid/testUUID/testUUID_savedata1.json", "r",encoding='utf-8') as file:
+            data = json.load(file)
     # 2. Update json object
-    data.append(jsonDatasave)
-    # 3. Write json file
-    with open("./uuid/testUUID/savedata1.json", "w",encoding='utf-8') as file:
-        json.dump(data, file,indent = 6)
-    # save_file = open("./uuid/testUUID/savedata1.json", "w")  
-    # json.dump(jsonDatasave, save_file, indent = 6)  
-    # save_file.close()  
+        # data.append(jsonDatasave)
+        # Ensure data is a list and update json object
+        if isinstance(data, list):
+            data.append(jsonDatasave)
+        else:
+            data = [data, jsonDatasave]
+    else:
+        # Create new data list
+        data = [jsonDatasave]
+    # print(data)
+    # 3. Write json file        
+    with open("./server/uuid/testUUID/testUUID_savedata1.json", "w",encoding='utf-8') as file:
+            json.dump(data, file,indent = 6)
+    # file.close()
 
 # save img in a json file
 def saveImgFile(saveImg):
     # define the name of the directory
-    path = "./uuid/testUUID"
-
+    path = "./server/uuid/testUUID"
     # check whether directory already exists
     try:
         os.mkdir(path)
         print("Folder %s created!" % path)
     except FileExistsError:
         print("Folder %s already exists" % path)
-
-    # define the name of the directory with its subdirectories
-    # path_sub = "./uuid/testUUID"
-    # os.makedirs(path_sub)
     jsonDatasave = saveImg.copy()
     jsonImgsave = jsonDatasave.pop("img_data")
-    save_file = open("./uuid/testUUID/saveimg.json", "w")  
+    save_file = open("./server/uuid/testUUID/testUUID_saveimg.json", "w")  
     json.dump(jsonImgsave, save_file, indent = 6)  
     save_file.close()
 
 
 # get the img and encode it
 def imgEncode():
-    im = Image.open("server/uuid/test.png")
+    im = Image.open("./server/uuid/test.png")
     data = io.BytesIO()
     im.save(data, "png")
     encoded_img_data = base64.b64encode(data.getvalue())
     # print(encoded_img_data.decode('utf-8'))
-
     return encoded_img_data.decode("utf-8")
 
 
+# def createApp():
 # instantiate the app
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -93,13 +81,13 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # sanity check route
-@app.route("/enthapy", methods=["GET", "POST"])
+@app.route("/enthalpy", methods=["GET", "POST"])
 def enthapy():
     response_object = {"status": "success"}
     if request.method == "POST":
         post_data = request.get_json()
         if post_data.get("dataType") == "Measured":
-            Parameters_MeasuredData.update(
+            globalVariables.Parameters_MeasuredData.update(
                 {
                     "MeasuredTime": post_data.get("MeasuredTime"),
                     "T1": post_data.get("T1"),
@@ -119,13 +107,13 @@ def enthapy():
             response_object["message"] = "Parameters_MeasuredData added!"
             print(response_object)
             if (
-                Parameters_MeasuredData["MeasuredDataStatus"]
-                == 1 & Parameters_StudentCaculation["CalculatedDataStatus"]
+                globalVariables.Parameters_MeasuredData["MeasuredDataStatus"]
+                == 1 & globalVariables.Parameters_StudentCaculation["CalculatedDataStatus"]
                 == 1
             ):
-                systemCalculation()
+                R134aSimpleCycleCalculationPloting.systemCalculation()
         elif post_data.get("dataType") == "Calculation":
-            Parameters_StudentCaculation.update(
+            globalVariables.Parameters_StudentCaculation.update(
                 {
                     "H1_Stu": post_data.get("H1"),
                     "H2_Stu": post_data.get("H2"),
@@ -144,24 +132,24 @@ def enthapy():
             response_object["message"] = "Parameters_StudentCaculation added!"
             print(response_object)
             if (
-                Parameters_MeasuredData["MeasuredDataStatus"]
-                == 1 & Parameters_StudentCaculation["CalculatedDataStatus"]
+                globalVariables.Parameters_MeasuredData["MeasuredDataStatus"]
+                == 1 & globalVariables.Parameters_StudentCaculation["CalculatedDataStatus"]
                 == 1
             ):
-                systemCalculation()
+                R134aSimpleCycleCalculationPloting.systemCalculation()
                 imgEncode()
 
         else:
             response_object["message"] = "Data hasn't been updated"
     # elif Response.status_code == 500:
     else:
-        response_object["Parameters_MeasuredData"] = Parameters_MeasuredData
-        response_object["Parameters_StudentCaculation"] = Parameters_StudentCaculation
-        response_object["Parameters_SystemCaculation"] = Parameters_SystemCaculation
+        response_object["Parameters_MeasuredData"] = globalVariables.Parameters_MeasuredData
+        response_object["Parameters_StudentCaculation"] = globalVariables.Parameters_StudentCaculation
+        response_object["Parameters_SystemCaculation"] = globalVariables.Parameters_SystemCaculation
         response_object["Parameters_DeviationCaculation"] = (
-            Parameters_DeviationCaculation
+            globalVariables.Parameters_DeviationCaculation
         )
-        response_object["Parameters_SaturatedValue"] = Parameters_SaturatedValue
+        response_object["Parameters_SaturatedValue"] = globalVariables.Parameters_SaturatedValue
         response_object["img_data"] = imgEncode()
 
         saveDataFile(response_object)
@@ -170,21 +158,23 @@ def enthapy():
         
     return jsonify(response_object)
 
-    # return jsonify({
-    #     'status': 'success',
-    #     'parameters': Parameters,
-    # })
+        # return jsonify({
+        #     'status': 'success',
+        #     'parameters': Parameters,
+        # })
 
 
-# @app.errorhandler(500)
-# def handle_server_error(error):
-#     response_object = {"status": "fail"}
-#     response_object["message"] = error
-#     print(error)
-#     return jsonify(response_object)
+    # @app.errorhandler(500)
+    # def handle_server_error(error):
+    #     response_object = {"status": "fail"}
+    #     response_object["message"] = error
+    #     print(error)
+    #     return jsonify(response_object)
 
 
 if __name__ == "__main__":
     app.run()
 
 app.run(debug=True)
+    # return app
+

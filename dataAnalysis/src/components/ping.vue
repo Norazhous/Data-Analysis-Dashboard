@@ -1,6 +1,6 @@
 <template>
   <div class="border-dashed">
-    <!-- <p>{{ msg }}</p> -->
+    <p>{{ msg }}</p>
     <h2> Submit data to the server and get feedback </h2>
     <p>(This section will only be displayed after students agree the consent)</p>
     <div class="row">
@@ -27,7 +27,7 @@ import axios from 'axios';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'enthapy',
+  name: 'enthalpy',
   data() {
     return {
       msg: 'Hello!',
@@ -92,7 +92,7 @@ export default {
     ]),
 
     getMessage() {
-      const path = 'http://127.0.0.1:5000/enthapy';
+      const path = 'http://127.0.0.1:5000/enthalpy';
       axios.get(path)
         .then((res) => {
           this.msg = res.data;
@@ -131,7 +131,7 @@ export default {
     },
 
     postMessage(payload) {
-      const path = 'http://127.0.0.1:5000/enthapy';
+      const path = 'http://127.0.0.1:5000/enthalpy';
       axios.post(path, payload)
         .then(() => {
           this.getMessage();

@@ -2,13 +2,7 @@ import CoolProp
 from CoolProp.Plots import PropertyPlot
 from CoolProp.Plots import SimpleCompressionCycle
 import matplotlib.pyplot as plt
-from app_globalVal import (
-    Parameters_MeasuredData,
-    Parameters_SystemCaculation,
-    Parameters_DeviationCaculation,
-    Parameters_StudentCaculation,
-    Parameters_SaturatedValue,
-)
+from modules import globalVariables
 
 
 def systemCalculation():
@@ -20,11 +14,11 @@ def systemCalculation():
     cycle = SimpleCompressionCycle("HEOS::R134a", "PH", unit_system="EUR")
 
     # T and P values. e- evaporator , c- condenser
-    T1 = Parameters_MeasuredData["T1"] + 273.15  # compressor inlet
-    T2 = Parameters_MeasuredData["T2"] + 273.15  # compressor outlet
-    T3 = Parameters_MeasuredData["T3"] + 273.15  # condenser inlet
-    T4 = Parameters_MeasuredData["T4"] + 273.15  # evaporator inlet
-    T5 = Parameters_MeasuredData["T5"] + 273.1514  # evaporator outlet
+    T1 = globalVariables.Parameters_MeasuredData["T1"] + 273.15  # compressor inlet
+    T2 = globalVariables.Parameters_MeasuredData["T2"] + 273.15  # compressor outlet
+    T3 = globalVariables.Parameters_MeasuredData["T3"] + 273.15  # condenser inlet
+    T4 = globalVariables.Parameters_MeasuredData["T4"] + 273.15  # evaporator inlet
+    T5 = globalVariables.Parameters_MeasuredData["T5"] + 273.1514  # evaporator outlet
 
     # T1 = 14.49+273.15   # compressor inlet
     # T2 = 68.02+273.15   # compressor outlet
@@ -32,13 +26,13 @@ def systemCalculation():
     # T4 = 3.65+273.15    # evaporator inlet
     # T5 = 2.82+273.15   # evaporator outlet
 
-    P1 = Parameters_MeasuredData["P1"]
-    P2 = Parameters_MeasuredData["P2"]
+    P1 = globalVariables.Parameters_MeasuredData["P1"]
+    P2 = globalVariables.Parameters_MeasuredData["P2"]
     # P1 = 2.41
     # P2 = 10.18
-    ASP = Parameters_MeasuredData["ASP"]
+    ASP = globalVariables.Parameters_MeasuredData["ASP"]
     # ASP = 1011.6
-    F = Parameters_MeasuredData["F"]
+    F = globalVariables.Parameters_MeasuredData["F"]
     # F= 4.43
 
     # plot the p-h diagram
@@ -140,7 +134,7 @@ def systemCalculation():
     # print ("P0 = ",p0, "P2 = ", p2)
 
     # update system calculation values in the global val
-    Parameters_SystemCaculation.update(
+    globalVariables.Parameters_SystemCaculation.update(
         {
             # system calcualtion data
             "H1_Sys": h1_Sys,
@@ -158,17 +152,17 @@ def systemCalculation():
     )
 
     # get students calculation data
-    H1_Stu = Parameters_StudentCaculation["H1_Stu"]
-    H2_Stu = Parameters_StudentCaculation["H2_Stu"]
-    H3_Stu = Parameters_StudentCaculation["H3_Stu"]
-    H4_Stu = Parameters_StudentCaculation["H4_Stu"]
-    H5_Stu = Parameters_StudentCaculation["H5_Stu"]
-    m_Stu = Parameters_StudentCaculation["m_Stu"]
-    QL_Stu = Parameters_StudentCaculation["QL_Stu"]
-    QH_Stu = Parameters_StudentCaculation["QH_Stu"]
-    W_Stu = Parameters_StudentCaculation["W_Stu"]
-    COP_Stu = Parameters_StudentCaculation["COP_Stu"]
-    n_Stu = Parameters_StudentCaculation["n_Stu"]
+    H1_Stu = globalVariables.Parameters_StudentCaculation["H1_Stu"]
+    H2_Stu = globalVariables.Parameters_StudentCaculation["H2_Stu"]
+    H3_Stu = globalVariables.Parameters_StudentCaculation["H3_Stu"]
+    H4_Stu = globalVariables.Parameters_StudentCaculation["H4_Stu"]
+    H5_Stu = globalVariables.Parameters_StudentCaculation["H5_Stu"]
+    m_Stu = globalVariables.Parameters_StudentCaculation["m_Stu"]
+    QL_Stu = globalVariables.Parameters_StudentCaculation["QL_Stu"]
+    QH_Stu = globalVariables.Parameters_StudentCaculation["QH_Stu"]
+    W_Stu = globalVariables.Parameters_StudentCaculation["W_Stu"]
+    COP_Stu = globalVariables.Parameters_StudentCaculation["COP_Stu"]
+    n_Stu = globalVariables.Parameters_StudentCaculation["n_Stu"]
 
     # calculate deviation between students calculation and system calculation
     H1_Dev = (h1_Sys - H1_Stu * 1000) / h1_Sys
@@ -184,7 +178,7 @@ def systemCalculation():
     n_Dev = (n_Sys - n_Stu) / n_Sys
 
     # updata deviation values in the global val
-    Parameters_DeviationCaculation.update(
+    globalVariables.Parameters_DeviationCaculation.update(
         {
             "H1_Dev": "{:.0%}".format(abs(H1_Dev)),
             "H2_Dev": "{:.0%}".format(abs(H2_Dev)),
@@ -201,7 +195,7 @@ def systemCalculation():
     )
 
     # update saturation values in the global val
-    Parameters_SaturatedValue.update(
+    globalVariables.Parameters_SaturatedValue.update(
         {
             "SaturT_P1": T_v,
             "SaturT_P2": T_l,
