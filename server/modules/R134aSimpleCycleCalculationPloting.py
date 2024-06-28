@@ -2,6 +2,14 @@ import CoolProp
 from CoolProp.Plots import PropertyPlot
 from CoolProp.Plots import SimpleCompressionCycle
 import matplotlib.pyplot as plt
+
+# import sys
+# import os
+
+# # Add the parent directory of the current script to sys.path
+# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
 from modules import globalVariables
 
 
@@ -204,4 +212,5 @@ def systemCalculation():
         }
     )
 
-    # print(Parameters_SaturatedValue)
+#     print(globalVariables.Parameters_SaturatedValue)
+# systemCalculation()

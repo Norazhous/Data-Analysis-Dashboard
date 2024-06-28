@@ -87,6 +87,7 @@ def enthapy():
     if request.method == "POST":
         post_data = request.get_json()
         if post_data.get("dataType") == "Measured":
+            # do not use globalvariables, change to pass to the function directly
             globalVariables.Parameters_MeasuredData.update(
                 {
                     "MeasuredTime": post_data.get("MeasuredTime"),

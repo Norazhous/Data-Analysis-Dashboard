@@ -22,9 +22,11 @@ class systemCalculation(unittest.TestCase):
     @patch('CoolProp.Plots.SimpleCompressionCycle')
     @patch('matplotlib.pyplot.savefig')
     def test_systemCalculation(self, mock_savefig, mock_cycle, mock_plot, mock_propssi, mock_globals):
+       
+        mock_parameter = MagicMock()
         # Setup mock data
         mock_globals.Parameters_MeasuredData = {
-            "T1": 15, "T2": 68, "T3": 43, "T4": 3.65, "T5": 2.82,
+            "T1": 15+273.15, "T2": 68, "T3": 43, "T4": 3.65, "T5": 2.82,
             "P1": 2.41, "P2": 10.18, "ASP": 1, "F": 4.43
         }
         mock_globals.Parameters_StudentCaculation = {
@@ -46,8 +48,8 @@ class systemCalculation(unittest.TestCase):
         self.assertAlmostEqual(updated_params_sys["H5_Sys"], 203805.01604391987)
         self.assertAlmostEqual(updated_params_sys["m_Sys"], 0.0014151388888888887)
         self.assertAlmostEqual(updated_params_sys["QL_Sys"], 291.3773708218967)
-        self.assertAlmostEqual(updated_params_sys["W_Sys"], 264.7341527792076)
-        self.assertAlmostEqual(updated_params_sys["QH_Sys"], 52.58313358995252)
+        self.assertAlmostEqual(updated_params_sys["W_Sys"], 52.58313358995252)
+        self.assertAlmostEqual(updated_params_sys["QH_Sys"], 264.7341527792076)
         self.assertAlmostEqual(updated_params_sys["COP_Sys"], 5.541270573451951)
         self.assertAlmostEqual(updated_params_sys["n_Sys"], 4.224066390041493)
         

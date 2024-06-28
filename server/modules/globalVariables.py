@@ -14,9 +14,6 @@ Parameters_MeasuredData= {
     "E": 0,
     "F": 0,
     "ASP": 0,
-    "H1": 1,
-    "H2": 2,
-    "COP": 3,
     'MeasuredDataStatus':0,
 }
 
