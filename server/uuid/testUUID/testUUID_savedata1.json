@@ -619,5 +619,530 @@
                   "SaturP_T3": 0,
                   "SaturP_T5": 0
             }
+      },
+      {
+            "status": "success",
+            "Parameters_MeasuredData": {},
+            "Parameters_StudentCaculation": {},
+            "Parameters_SystemCaculation": {}
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "100%",
+                  "H2_Dev": "100%",
+                  "H3_Dev": "100%",
+                  "H4_Dev": "100%",
+                  "H5_Dev": "100%",
+                  "m_Dev": "100%",
+                  "QL_Dev": "100%",
+                  "QH_Dev": "100%",
+                  "W_Dev": "100%",
+                  "COP_Dev": "100%",
+                  "n_Dev": "100%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "100%",
+                  "H2_Dev": "100%",
+                  "H3_Dev": "100%",
+                  "H4_Dev": "100%",
+                  "H5_Dev": "100%",
+                  "m_Dev": "100%",
+                  "QL_Dev": "100%",
+                  "QH_Dev": "100%",
+                  "W_Dev": "100%",
+                  "COP_Dev": "100%",
+                  "n_Dev": "100%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "3%",
+                  "H2_Dev": "11%",
+                  "H3_Dev": "23%",
+                  "H4_Dev": "2%",
+                  "H5_Dev": "96%",
+                  "m_Dev": "607%",
+                  "QL_Dev": "79%",
+                  "QH_Dev": "81%",
+                  "W_Dev": "375%",
+                  "COP_Dev": "10%",
+                  "n_Dev": "18%"
+            },
+            "Parameters_MeasuredData": {
+                  "MeasuredTime": 30,
+                  "T1": 15,
+                  "T2": 68,
+                  "T3": 43,
+                  "T4": 3.65,
+                  "T5": 2.82,
+                  "P1": 2.41,
+                  "P2": 10.18,
+                  "P3": 10.5,
+                  "E": 200,
+                  "F": 4.43,
+                  "ASP": 1,
+                  "MeasuredDataStatus": 1
+            },
+            "Parameters_StudentCaculation": {
+                  "H1_Stu": 400,
+                  "H2_Stu": 400,
+                  "H3_Stu": 200,
+                  "H4_Stu": 200,
+                  "H5_Stu": 400,
+                  "m_Stu": 0.01,
+                  "QL_Stu": 60,
+                  "QH_Stu": 50,
+                  "W_Stu": 250,
+                  "COP_Stu": 5,
+                  "n_Stu": 5,
+                  "CalculatedDataStatus": 1
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "100%",
+                  "H2_Dev": "100%",
+                  "H3_Dev": "100%",
+                  "H4_Dev": "100%",
+                  "H5_Dev": "100%",
+                  "m_Dev": "100%",
+                  "QL_Dev": "100%",
+                  "QH_Dev": "100%",
+                  "W_Dev": "100%",
+                  "COP_Dev": "100%",
+                  "n_Dev": "100%"
+            },
+            "Parameters_MeasuredData": {
+                  "MeasuredTime": 30,
+                  "T1": 15,
+                  "T2": 68,
+                  "T3": 43,
+                  "T4": 3.65,
+                  "T5": 2.82,
+                  "P1": 2.41,
+                  "P2": 10.18,
+                  "P3": 10.5,
+                  "E": 200,
+                  "F": 4.43,
+                  "ASP": 1,
+                  "MeasuredDataStatus": 1
+            },
+            "Parameters_StudentCaculation": {
+                  "H1_Stu": 0,
+                  "H2_Stu": 0,
+                  "H3_Stu": 0,
+                  "H4_Stu": 0,
+                  "H5_Stu": 0,
+                  "m_Stu": 0,
+                  "QL_Stu": 0,
+                  "QH_Stu": 0,
+                  "W_Stu": 0,
+                  "COP_Stu": 0,
+                  "n_Stu": 0,
+                  "CalculatedDataStatus": 1
+            }
+      },
+      {
+            "status": "success",
+            "message": "Parameters_StudentCaculation added!",
+            "Parameters_SystemCaculation": {
+                  "H1_Sys": 410823.8061406922,
+                  "H2_Sys": 447981.3841019895,
+                  "H3_Sys": 260908.47213709648,
+                  "H4_Sys": 204923.6128030088,
+                  "H5_Sys": 203805.01604391987,
+                  "m_Sys": 0.0014151388888888887,
+                  "QL_Sys": 291.3773708218967,
+                  "QH_Sys": 264.7341527792076,
+                  "W_Sys": 52.58313358995252,
+                  "COP_Sys": 5.541270573451951,
+                  "n_Sys": 4.224066390041493
+            },
+            "Parameters_SaturatedValue": {
+                  "SaturT_P1": 4.280896074225211,
+                  "SaturT_P2": 43.58785669602315,
+                  "SaturP_T3": 1100886.8247386036,
+                  "SaturP_T5": 323932.30456048413
+            },
+            "Parameters_DeviationCaculation": {
+                  "H1_Dev": "100%",
+                  "H2_Dev": "100%",
+                  "H3_Dev": "100%",
+                  "H4_Dev": "100%",
+                  "H5_Dev": "100%",
+                  "m_Dev": "100%",
+                  "QL_Dev": "100%",
+                  "QH_Dev": "100%",
+                  "W_Dev": "100%",
+                  "COP_Dev": "100%",
+                  "n_Dev": "100%"
+            },
+            "Parameters_MeasuredData": {
+                  "MeasuredTime": 30,
+                  "T1": 15,
+                  "T2": 68,
+                  "T3": 43,
+                  "T4": 3.65,
+                  "T5": 2.82,
+                  "P1": 2.41,
+                  "P2": 10.18,
+                  "P3": 10.5,
+                  "E": 200,
+                  "F": 4.43,
+                  "ASP": 1,
+                  "MeasuredDataStatus": 1
+            },
+            "Parameters_StudentCaculation": {
+                  "H1_Stu": 0,
+                  "H2_Stu": 0,
+                  "H3_Stu": 0,
+                  "H4_Stu": 0,
+                  "H5_Stu": 0,
+                  "m_Stu": 0,
+                  "QL_Stu": 0,
+                  "QH_Stu": 0,
+                  "W_Stu": 0,
+                  "COP_Stu": 0,
+                  "n_Stu": 0,
+                  "CalculatedDataStatus": 1
+            }
       }
 ]

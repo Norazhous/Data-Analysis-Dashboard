@@ -22,12 +22,18 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr>
-                                <td><input type="number" name="" class="inputnumber" id="time" placeholder="0" value="30"></td>
-                                <td><input type="number" name="" class="inputnumber" id="T1" placeholder="0" value="15"></td>
-                                <td><input type="number" name="" class="inputnumber" id="T2" placeholder="0" value="68"></td>
-                                <td><input type="number" name="" class="inputnumber" id="T3" placeholder="0" value="43"></td>
-                                <td><input type="number" name="" class="inputnumber" id="T4" placeholder="0" value="3.65"></td>
-                                <td><input type="number" name="" class="inputnumber" id="T5" placeholder="0" value="2.82"></td>
+                                <td><input type="number" name="" class="inputnumber" id="time" placeholder="0"
+                                        value="30"></td>
+                                <td><input type="number" name="" class="inputnumber" id="T1" placeholder="0" value="15">
+                                </td>
+                                <td><input type="number" name="" class="inputnumber" id="T2" placeholder="0" value="68">
+                                </td>
+                                <td><input type="number" name="" class="inputnumber" id="T3" placeholder="0" value="43">
+                                </td>
+                                <td><input type="number" name="" class="inputnumber" id="T4" placeholder="0"
+                                        value="3.65"></td>
+                                <td><input type="number" name="" class="inputnumber" id="T5" placeholder="0"
+                                        value="2.82"></td>
                                 <!-- <td><input type="number" name="" id="inputnumber" placeholder="22"></td>
                                 <td><input type="number" name="" id="inputnumber" placeholder="22"></td>
                                 <td><input type="number" name="" id="inputnumber" placeholder="22"></td>
@@ -57,12 +63,18 @@
                                 <td><input type="number" name="" id="inputnumber" placeholder="22"></td>
                                 <td><input type="number" name="" id="inputnumber" placeholder="22"></td>
                                 <td><input type="number" name="" id="inputnumber" placeholder="22"></td> -->
-                                <td><input type="number" name="" class="inputnumber" id="P1" placeholder="0"  value="2.41"></td>
-                                <td><input type="number" name="" class="inputnumber" id="P2" placeholder="0"  value="10.18"></td>
-                                <td><input type="number" name="" class="inputnumber" id="P3" placeholder="0"  value="10.5"></td>
-                                <td><input type="number" name="" class="inputnumber" id="F" placeholder="0"  value="4.43"></td>
-                                <td><input type="number" name="" class="inputnumber" id="E" placeholder="0"  value="200"></td>
-                                <td><input type="number" name="" class="inputnumber" id="ASP" placeholder="0"  value="1"></td>
+                                <td><input type="number" name="" class="inputnumber" id="P1" placeholder="0"
+                                        value="2.41"></td>
+                                <td><input type="number" name="" class="inputnumber" id="P2" placeholder="0"
+                                        value="10.18"></td>
+                                <td><input type="number" name="" class="inputnumber" id="P3" placeholder="0"
+                                        value="10.5"></td>
+                                <td><input type="number" name="" class="inputnumber" id="F" placeholder="0"
+                                        value="4.43"></td>
+                                <td><input type="number" name="" class="inputnumber" id="E" placeholder="0" value="200">
+                                </td>
+                                <td><input type="number" name="" class="inputnumber" id="ASP" placeholder="0" value="1">
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -152,6 +164,7 @@ export default {
             'SetE',
             'SetF',
             'SetASP',
+            'SetMeasuerdDataConfirmed'
 
         ]),
 
@@ -169,6 +182,7 @@ export default {
             this.SetE(document.getElementById('E').value);
             this.SetF(document.getElementById('F').value);
             this.SetASP(document.getElementById('ASP').value);
+            this.SetMeasuerdDataConfirmed(1);
             // console.log(this.GetMeasuredTime, this.GetT1, this.GetT2,this.GetT3,this.GetT4,this.GetT5,this.GetP1,this.GetP2,this.GetP3,this.GetE,this.GetF,this.GetASP);
         },
 
@@ -320,7 +334,6 @@ export default {
         },
 
         ClearformInput() {
-
             document.getElementById('time').value = 0;
             document.getElementById('T1').value = 0;
             document.getElementById('T2').value = 0;
@@ -344,6 +357,7 @@ export default {
             this.MeasuredDataChart.update();
             this.ClearformInput();
             this.GetDataformInput();
+            this.SetMeasuerdDataConfirmed(0);
             console.log(this.GetMeasuredTime);
 
         },

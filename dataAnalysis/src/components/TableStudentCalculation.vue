@@ -21,11 +21,11 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td><input type="number" name="" class="inputnumber" id="H1" placeholder="0"  value="400"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H2" placeholder="0"  value="400"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H3" placeholder="0"  value="200"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H4" placeholder="0"  value="200"></td>
-                        <td><input type="number" name="" class="inputnumber" id="H5" placeholder="0"  value="400"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H1" placeholder="0" value="400"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H2" placeholder="0" value="400"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H3" placeholder="0" value="200"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H4" placeholder="0" value="200"></td>
+                        <td><input type="number" name="" class="inputnumber" id="H5" placeholder="0" value="400"></td>
                     </tr>
                 </tbody>
             </table>
@@ -64,17 +64,32 @@
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td><input type="number" name="" class="inputnumber" id="W" placeholder="0"  value="250"></td>
-                        <td><input type="number" name="" class="inputnumber" id="COP" placeholder="0"  value="5"></td>
-                        <td><input type="number" name="" class="inputnumber" id="n" placeholder="0"  value="5"></td>
+                        <td><input type="number" name="" class="inputnumber" id="W" placeholder="0" value="250"></td>
+                        <td><input type="number" name="" class="inputnumber" id="COP" placeholder="0" value="5"></td>
+                        <td><input type="number" name="" class="inputnumber" id="n" placeholder="0" value="5"></td>
 
                     </tr>
                 </tbody>
             </table>
 
         </div>
-        <button class="btn btn-primary" @click="GetDataformInput">Confirm</button>
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary" @click="GetDataformInput">Confirm</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary" @click="reset">Reset</button>
+            </div>
+        </div>
+        <div class="col-3">
+
+        </div>
     </div>
+
+
     <!-- </div>
     </div> -->
 
@@ -127,6 +142,7 @@ export default {
             'SetW',
             'SetCOP',
             'Setn',
+            'SetCalcuDataConfirmed',
         ]),
 
         GetDataformInput() {
@@ -141,9 +157,33 @@ export default {
             this.SetW(document.getElementById('W').value);
             this.SetCOP(document.getElementById('COP').value);
             this.Setn(document.getElementById('n').value);
+            this.SetCalcuDataConfirmed(1);
             // console.log(this.GetH1, this.GetH2,this.GetH3,this.GetH4,this.GetH5,
             // this.Getm,this.GetQL,this.GetQH,this.GetW,this.GetCOP,this.Getn);
         },
+
+        ClearformInput() {
+            document.getElementById('H1').value = 0;
+            document.getElementById('H2').value = 0;
+            document.getElementById('H3').value = 0;
+            document.getElementById('H4').value = 0;
+            document.getElementById('H5').value = 0;
+            document.getElementById('m').value = 0;
+            document.getElementById('QL').value = 0;
+            document.getElementById('QH').value = 0;
+            document.getElementById('W').value = 0;
+            document.getElementById('COP').value = 0;
+            document.getElementById('n').value = 0;
+        },
+
+        //clear and reset the data in the input form and chart
+        reset() {
+            this.ClearformInput();
+            this.GetDataformInput();
+            this.SetCalcuDataConfirmed(0);
+
+        },
+
 
     },
 

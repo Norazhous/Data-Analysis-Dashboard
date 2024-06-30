@@ -50,8 +50,21 @@ const dataStore = {
         //img_data 
         img_data: null,
 
+        //data confirmed
+        MeasuerdDataConfirmed: 0,
+        CalcuDataConfirmed: 0,
+
     }),
     mutations: {
+        //set the data confirmed value according to the student input
+        SETMeasuerdDataConfirmed(state, value) {
+            state.MeasuerdDataConfirmed = value;
+        },
+
+        SETCalcuDataConfirmed(state, value) {
+            state.CalcuDataConfirmed = value;
+        },
+
         //set the measured parameters value according to the student input
         SETMeasuredTime(state, value) {
             state.measuredTime = value;
@@ -175,12 +188,22 @@ const dataStore = {
         },
 
         //set img data from server
-        SETimg_data(state,value){
+        SETimg_data(state, value) {
             state.img_data = value;
         }
 
     },
     actions: {
+        //commit the data confirmed value according to the student input
+        SetMeasuerdDataConfirmed(context, value) {
+            context.commit('SETMeasuerdDataConfirmed', value)
+        },
+
+        SetCalcuDataConfirmed(context, value) {
+            context.commit('SETCalcuDataConfirmed', value)
+        },
+
+
         //commit the mutation of setting value of measured data 
         SetMeasuredTime(context, value) {
             context.commit('SETMeasuredTime', value);
@@ -304,12 +327,22 @@ const dataStore = {
         },
 
         //commit img_data value from server
-        Setimg_data(context,value){
-            context.commit('SETimg_data',value)
+        Setimg_data(context, value) {
+            context.commit('SETimg_data', value)
         },
 
     },
     getters: {
+
+        // get the confirmed state data
+        GetMeasuerdDataConfirmed(state) {
+            return state.MeasuerdDataConfirmed
+        },
+
+        GetCalcuDataConfirmed(state) {
+            return state.CalcuDataConfirmed
+        },
+
 
         // get the measured data
         GetMeasuredTime(state) {
@@ -434,7 +467,7 @@ const dataStore = {
         },
 
         //get img_data
-        Getimg_data(state){
+        Getimg_data(state) {
             return state.img_data
         },
 
