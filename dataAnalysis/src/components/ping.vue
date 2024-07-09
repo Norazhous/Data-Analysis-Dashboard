@@ -1,6 +1,6 @@
 <template>
   <div class="border-dashed">
-    <p>{{ msg }}</p>
+    <!-- <p>{{ msg }}</p> -->
     <h2> Submit data to the server and get feedback </h2>
     <p>(This section will only be displayed after students agree the consent)</p>
     <div class="row">

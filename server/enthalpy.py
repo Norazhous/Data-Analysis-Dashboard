@@ -9,6 +9,7 @@ import io
 import os
 import json
 
+#this part is from analytics repo, get the user information from the logging system 
 def getUserInformation():
      try:
         username = request.args.get('username', default='none')
