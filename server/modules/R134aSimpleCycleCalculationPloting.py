@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 
 
 def systemCalculation(Parameters_MeasuredData):
-    print('test the parameters pass')
-    print(Parameters_MeasuredData)
+    # print('test the parameters pass')
+    # print(Parameters_MeasuredData)
 
     # introduce CoolProp
     CP = CoolProp.CoolProp
@@ -62,7 +62,7 @@ def systemCalculation(Parameters_MeasuredData):
     # plot the p-h diagram
 
     pp.title("R134a P-H Diagram")
-    pp.savefig("server/uuid/test.png", dpi=100, bbox_inches="tight")
+    pp.savefig("server/uuid/phFigure.png", dpi=100, bbox_inches="tight")
     # pp.show()
 
     # show the diagram by plt while it's doesn't work, need to use api from propertyPlot

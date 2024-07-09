@@ -11,10 +11,9 @@ import os
 # Add the parent directory of the current script to sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import enthalpy  
-from modules import globalVariables
+from enthalpy import saveDataFile,saveImgFile,enthalpy
 
-class TestEnthalpyEndpoint(unittest.TestCase):
+class TestMain(unittest.TestCase):
     def setUp(self):
         self.app = enthalpy.test_client()
         self.app.testing = True
